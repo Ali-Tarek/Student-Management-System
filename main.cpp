@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
 
+    bool stayInOuterLoop = true;
 
     do{
         cout << "Choose Data Structure:\n";
@@ -17,11 +18,13 @@ int main()
 
         int option; cin >> option;
 
+
         switch (option) {
+
             case 1:{
-                bool stay = 1;
-                BST<student> students;
-                cout << "((Second Menu - choice 1 BST))\n";
+                bool stayInInnerLoop = true;
+                BST students;
+                cout << "\n((Second Menu - choice 1 BST))\n";
 
                 do{
 
@@ -34,13 +37,15 @@ int main()
 
                     cout << "Enter number of option: ";
                     int internalOption; cin >> internalOption;
+                    cout << '\n';
+
 
                     switch (internalOption) {
                         case 1:{
                             student s; cin >> s;
 
                             students.insert(s);
-                            cout << "The student is added.\n";
+                            cout << "The student is added.\n\n";
                             break;
                         }
                         case 2:{
@@ -49,25 +54,56 @@ int main()
                             cout << "Id: ";
                             cin >> id;
 
-                            
+                            if(students.has(id)){
+                                cout << "Student is found.\n";
+                                student removedStudent = students.search(id);
+                                cout << removedStudent;
+                                students.remove(removedStudent);
+                                cout << "Student is deleted.\n\n";
+                            }
+
+                            else{
+                                cout << "Student is not found.\n\n";
+                            }
 
                             break;
                         }
                         case 3:{
 
+                            int id;
+                            cout << "Id: ";
+                            cin >> id;
+
+                            if(students.has(id)){
+                                cout << "Student is found.\n";
+                                cout << students.search(id) << '\n\n';
+                            }
+
+                            else{
+                                cout << "Student is not found.\n\n";
+                            }
+
+
                             break;
                         }
                         case 4:{
 
+                            if(students.empty())
+                                cout << "No students.\n\n";
+                            else {
+                                cout << "Print " << students.size() << " Students.\n\n";
+                                students.inorder();
+                            }
+
                             break;
                         }
                         case 5:{
-                            stay = 0;
+                            stayInInnerLoop = false;
                             break;
                         }
                     }
 
-                }while(stay);
+                }while(stayInInnerLoop);
 
                 break;
             }
@@ -88,20 +124,17 @@ int main()
             }
 
             case 5:{
-
+                stayInOuterLoop = false;
                 break;
             }
 
             default:{
-                cout << "Enter valid option\n";
+                cout << "Enter valid option\n\n";
+                break;
             }
 
         }
 
-
-    }while(true);
-
-
-
+    }while(stayInOuterLoop);
 
 }

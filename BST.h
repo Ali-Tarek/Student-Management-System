@@ -2,19 +2,20 @@
 #define MAIN_CPP_BST_H
 
 #include <bits/stdc++.h>
+#include "student.h"
+
 
 using namespace std;
 
-template <class T>
 class BST {
 private:
 
     class BSTNode{
     public:
-        T key;
+        student key;
         BSTNode* left;
         BSTNode* right;
-        BSTNode(T value) {
+        BSTNode(student value) {
             key = value;
             left = right = nullptr;
         }
@@ -57,7 +58,7 @@ private:
     }
 
 
-    BSTNode* insert(BSTNode* r, T value){
+    BSTNode* insert(BSTNode* r, student value){
         if(r == nullptr){
             r = new BSTNode(value);
             return r;
@@ -80,7 +81,7 @@ private:
         return r;
     }
 
-    BSTNode* deleteNode(BSTNode* r, T value){
+    BSTNode* deleteNode(BSTNode* r, student value){
         if (r == nullptr) {
             return r;
         }
@@ -101,8 +102,8 @@ private:
                  return temp;
             } else {
                 BSTNode* temp = findMin(r->right);
-                 r->key = temp->key;
-                 r->right = deleteNode(r->right, temp->key);
+                r->key = temp->key;
+                r->right = deleteNode(r->right, temp->key);
             }
         }
         return r;
@@ -121,24 +122,24 @@ public:
         return SIZE == 0;
     }
 
-    void insert(T value) {
+    void insert(student value) {
         root = insert(root, value);
         SIZE++;
     }
 
-    void remove(T value){
+    void remove(student value){
         root = deleteNode(root, value);
         SIZE--;
     }
 
-    T search(T value) {
+    student search(int id) {
 
         BSTNode* cur = root;
         while(cur != nullptr){
-            if(value < cur->key){
+            if(id < cur->key.getId()){
                 cur = cur->left;
             }
-            else if(value > cur->key){
+            else if(id > cur->key.getId()){
                 cur = cur->right;
             }
             else{
@@ -147,14 +148,14 @@ public:
         }
     }
 
-    bool has(T value){
+    bool has(int id){
 
         BSTNode* cur = root;
         while(cur != nullptr){
-            if(value < cur->key){
+            if(id < cur->key.getId()){
                 cur = cur->left;
             }
-            else if(value > cur->key){
+            else if(id > cur->key.getId()){
                 cur = cur->right;
             }
             else{

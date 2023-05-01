@@ -16,7 +16,7 @@ private:
         BSTNode* right;
         BSTNode(T value) {
             key = value;
-            left = right = NULL;
+            left = right = nullptr;
         }
     };
 
@@ -24,16 +24,16 @@ private:
     int SIZE;
 
     void destroy(BSTNode*& r) {
-        if (r != NULL) {
+        if (r != nullptr) {
             destroy(r->left);
             destroy(r->right);
             delete r;
-            r = NULL;
+            r = nullptr;
         }
     }
 
     void inorder(BSTNode* r){
-        if(r != NULL){
+        if(r != nullptr){
             inorder(r->left);
             cout << r->key << ' ';
             inorder(r->right);
@@ -41,7 +41,7 @@ private:
     }
 
     void preorder(BSTNode* r) {
-        if(r != NULL){
+        if(r != nullptr){
             cout << r->key << ' ';
             preorder(r->left);
             preorder(r->right);
@@ -49,7 +49,7 @@ private:
     }
 
     void postorder(BSTNode* r) {
-        if(r != NULL){
+        if(r != nullptr){
             postorder(r->left);
             postorder(r->right);
             cout << r->key << ' ';
@@ -74,14 +74,14 @@ private:
 
 
     BSTNode* findMin(BSTNode* r) {
-        while (r->left != NULL) {
+        while (r->left != nullptr) {
             r = r->left;
         }
         return r;
     }
 
     BSTNode* deleteNode(BSTNode* r, T value){
-        if (r == NULL) {
+        if (r == nullptr) {
             return r;
         }
         else if (value < r->key) {
@@ -91,11 +91,11 @@ private:
             r->right = deleteNode(r->right, value);
         }
         else {
-             if (r->left == NULL) {
+             if (r->left == nullptr) {
                 BSTNode* temp = r->right;
                 delete r;
                 return temp;
-            } else if (r->right == NULL) {
+            } else if (r->right == nullptr) {
                  BSTNode* temp = r->left;
                  delete r;
                  return temp;
@@ -111,7 +111,7 @@ private:
 
 public:
 
-    BST() : root(NULL), SIZE(0){}
+    BST() : root(nullptr), SIZE(0) {}
 
     int size(){
         return SIZE;
@@ -129,6 +129,39 @@ public:
     void remove(T value){
         root = deleteNode(root, value);
         SIZE--;
+    }
+
+    T search(T value) {
+
+        BSTNode* cur = root;
+        while(cur != nullptr){
+            if(value < cur->key){
+                cur = cur->left;
+            }
+            else if(value > cur->key){
+                cur = cur->right;
+            }
+            else{
+                return cur->key;
+            }
+        }
+    }
+
+    bool has(T value){
+
+        BSTNode* cur = root;
+        while(cur != nullptr){
+            if(value < cur->key){
+                cur = cur->left;
+            }
+            else if(value > cur->key){
+                cur = cur->right;
+            }
+            else{
+                return 1;
+            }
+        }
+        return 0;
     }
 
     void clear(){

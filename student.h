@@ -6,28 +6,13 @@
 using namespace std;
 
 class student{
+public:
 
-private:
     int Id;
     string Name, Dep;
     float Gpa;
 
-public:
-
     student() = default;
-
-    int getId(){
-        return Id;
-    }
-    string getName(){
-        return Name;
-    }
-    string getDep(){
-        return Dep;
-    }
-    float getGpa(){
-        return Gpa;
-    }
 
     friend istream& operator>>(istream& in, student& obj) {
         cout << "Id: ";
@@ -40,8 +25,9 @@ public:
         cout << "GPA: ";
         in >> obj.Gpa;
 
+        cin.ignore();
         cout << "Department: ";
-        in >> obj.Dep;
+        getline(cin, obj.Dep);
 
         return in;
     }

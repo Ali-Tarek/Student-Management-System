@@ -204,10 +204,10 @@ public:
 
         AVLNode* cur = root;
         while(cur != nullptr){
-            if(id < cur->key.getId()){
+            if(id < cur->key.Id){
                 cur = cur->left;
             }
-            else if(id > cur->key.getId()){
+            else if(id > cur->key.Id){
                 cur = cur->right;
             }
             else{
@@ -220,10 +220,10 @@ public:
 
         AVLNode* cur = root;
         while(cur != nullptr){
-            if(id < cur->key.getId()){
+            if(id < cur->key.Id){
                 cur = cur->left;
             }
-            else if(id > cur->key.getId()){
+            else if(id > cur->key.Id){
                 cur = cur->right;
             }
             else{

@@ -35,7 +35,7 @@ int main()
                     cout << "2. Remove student\n";
                     cout << "3. Search student\n";
                     cout << "4. Print All (sorted by id)\n";
-                    cout << "5. Return to main menu\n";
+                    cout << "5. Return to main menu\n\n";
 
                     cout << "Enter number of option: ";
                     int internalOption; cin >> internalOption;
@@ -123,7 +123,7 @@ int main()
                     cout << "2. Remove student\n";
                     cout << "3. Search student\n";
                     cout << "4. Print All (sorted by id)\n";
-                    cout << "5. Return to main menu\n";
+                    cout << "5. Return to main menu\n\n";
 
                     cout << "Enter number of option: ";
                     int internalOption; cin >> internalOption;
@@ -205,6 +205,50 @@ int main()
 
             case 4:{
 
+                bool stayInInnerLoop = true;
+                Maxheap students;
+                cout << "((Second Menu - choice 4 Max Heap))\n";
+
+                do{
+
+                    cout << "Choose one of the following options:\n";
+                    cout << "1. Add student\n";
+                    cout << "2. Print All (sorted by GPA)\n";
+                    cout << "3. Return to main menu\n\n";
+
+                    cout << "Enter number of option: ";
+                    int internalOption; cin >> internalOption;
+                    cout << '\n';
+
+
+                    switch (internalOption) {
+                        case 1:{
+                            student s; cin >> s;
+
+                            students.insert(s);
+                            cout << "The student is added.\n\n";
+                            break;
+                        }
+                        case 2:{
+
+                            if(students.empty())
+                                cout << "No students.\n\n";
+                            else{
+                                cout << "Print " << students.size() << " Students.\n\n";
+                                students.print();
+                            }
+                            break;
+                        }
+
+                        case 3:{
+                            stayInInnerLoop = false;
+                            break;
+                        }
+                    }
+
+                }while(stayInInnerLoop);
+
+
                 break;
             }
 
@@ -221,7 +265,5 @@ int main()
         }
 
     }while(stayInOuterLoop);
-
-
 
 }

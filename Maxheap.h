@@ -34,9 +34,9 @@ private:
 
         if (!students.empty()) {
             student ret = students.front();
-            students.front().Gpa = FLT_MIN;
-            maxHeapfiy(students.size(), 0);
+            students.front() = students.back();
             students.pop_back();
+            maxHeapfiy(students.size(), 0);
             return ret;
         }
 
@@ -63,6 +63,14 @@ public:
 
     Maxheap() = default;
 
+    int size(){
+        return students.size();
+    }
+
+    bool empty(){
+        return students.size() == 0;
+    }
+
     void insert(student s){
 
         students.push_back(s);
@@ -76,6 +84,19 @@ public:
 
     void print(){
 
+        int n = students.size();
+        vector <student> temp;
+
+        for(int i = 0; i < n; i++)
+            temp.push_back(extarctMax());
+
+        for(auto s : temp)
+            cout << s;
+        cout << '\n';
+
+        for(int i = 0; i < n; i++){
+            this->insert(temp[i]);
+        }
     }
 
 };

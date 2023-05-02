@@ -1,12 +1,12 @@
-#ifndef AVL_H_MAXHEAP_H
-#define AVL_H_MAXHEAP_H
+#ifndef MAIN_CPP_MINHEAP_H
+#define MAIN_CPP_MINHEAP_H
 
 #include <bits/stdc++.h>
 #include "student.h"
 
 using namespace std;
 
-class Maxheap{
+class Minheap{
 private:
 
     vector <student> students;
@@ -30,37 +30,39 @@ private:
             return (i-1)/2;
     }
 
-    student extarctMax() {
+    student extarctMin() {
+
         student ret;
         if (!students.empty()) {
             ret = students.front();
             students.front() = students.back();
             students.pop_back();
-            maxHeapfiy(0);
+            minHeapfiy(0);
+
         }
         return ret;
     }
 
-    void maxHeapfiy(int idx){
+    void minHeapfiy(int idx){
 
-        int largest = idx;
+        int smallest = idx;
 
-        if(left(idx) != -1 && students[left(idx)].Gpa > students[largest].Gpa)
-            largest = left(idx);
+        if(left(idx) != -1 && students[left(idx)].Gpa < students[smallest].Gpa)
+            smallest = left(idx);
 
-        if(right(idx) != -1 && students[right(idx)].Gpa > students[largest].Gpa)
-            largest = right(idx);
+        if(right(idx) != -1 && students[right(idx)].Gpa < students[smallest].Gpa)
+            smallest = right(idx);
 
-        if(largest != idx){
-            swap(students[idx], students[largest]);
-            maxHeapfiy(largest);
+        if(smallest != idx){
+            swap(students[idx], students[smallest]);
+            minHeapfiy(smallest);
         }
 
     }
 
 public:
 
-    Maxheap() = default;
+    Minheap() = default;
 
     int size(){
         return students.size();
@@ -75,7 +77,7 @@ public:
         students.push_back(s);
         int idx = students.size()-1;
 
-        while(parent(idx) != -1 && students[parent(idx)].Gpa < students[idx].Gpa) {
+        while(parent(idx) != -1 && students[parent(idx)].Gpa > students[idx].Gpa) {
             swap(students[idx], students[parent(idx)]);
             idx = parent(idx);
         }
@@ -87,7 +89,7 @@ public:
         vector <student> temp;
 
         for(int i = 0; i < n; i++)
-            temp.push_back(extarctMax());
+            temp.push_back(extarctMin());
 
         for(auto s : temp)
             cout << s;
@@ -100,4 +102,4 @@ public:
 
 };
 
-#endif //AVL_H_MAXHEAP_H
+#endif //MAIN_CPP_MINHEAP_H

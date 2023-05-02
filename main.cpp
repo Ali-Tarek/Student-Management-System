@@ -1,7 +1,9 @@
 #include "BST.h"
 #include "AVL.h"
-#include "student.h"
 #include "Maxheap.h"
+#include "Minheap.h"
+#include "student.h"
+
 using namespace std;
 
 int main()
@@ -11,7 +13,7 @@ int main()
     bool stayInOuterLoop = true;
 
     do{
-        cout << "Choose Data Structure:\n";
+        cout << "\nChoose Data Structure:\n";
         cout << "1. BST\n";
         cout << "2. AVL\n";
         cout << "3. Min Heap\n";
@@ -103,6 +105,10 @@ int main()
                             stayInInnerLoop = false;
                             break;
                         }
+                        default:{
+                            cout << "Enter valid option\n\n";
+                            break;
+                        }
                     }
 
                 }while(stayInInnerLoop);
@@ -191,6 +197,11 @@ int main()
                             stayInInnerLoop = false;
                             break;
                         }
+
+                        default:{
+                            cout << "Enter valid option\n\n";
+                            break;
+                        }
                     }
 
                 }while(stayInInnerLoop);
@@ -200,14 +211,9 @@ int main()
 
             case 3:{
 
-                break;
-            }
-
-            case 4:{
-
                 bool stayInInnerLoop = true;
-                Maxheap students;
-                cout << "((Second Menu - choice 4 Max Heap))\n";
+                Minheap students;
+                cout << "\n((Second Menu - choice 3 Min Heap))\n";
 
                 do{
 
@@ -242,6 +248,63 @@ int main()
 
                         case 3:{
                             stayInInnerLoop = false;
+                            break;
+                        }
+
+                        default:{
+                            cout << "Enter valid option\n\n";
+                            break;
+                        }
+                    }
+
+                }while(stayInInnerLoop);
+                break;
+            }
+
+            case 4:{
+
+                bool stayInInnerLoop = true;
+                Maxheap students;
+                cout << "\n((Second Menu - choice 4 Max Heap))\n";
+
+                do{
+
+                    cout << "Choose one of the following options:\n";
+                    cout << "1. Add student\n";
+                    cout << "2. Print All (sorted by GPA)\n";
+                    cout << "3. Return to main menu\n\n";
+
+                    cout << "Enter number of option: ";
+                    int internalOption; cin >> internalOption;
+                    cout << '\n';
+
+
+                    switch (internalOption) {
+                        case 1:{
+                            student s; cin >> s;
+
+                            students.insert(s);
+                            cout << "The student is added.\n\n";
+                            break;
+                        }
+                        case 2:{
+
+                            if(students.empty())
+                                cout << "No students.\n\n";
+                            else{
+                                cout << "Print " << students.size() << " Students.\n\n";
+                                students.print();
+                            }
+                            break;
+                        }
+
+                        case 3:{
+                            stayInInnerLoop = false;
+                            break;
+                        }
+
+                        default:{
+                            cout << "Enter valid option\n\n";
                             break;
                         }
                     }

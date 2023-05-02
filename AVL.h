@@ -211,9 +211,10 @@ public:
                 cur = cur->right;
             }
             else{
-                return cur->key;
+                break;
             }
         }
+        return cur->key;
     }
 
     bool has(int id){

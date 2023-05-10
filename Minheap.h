@@ -47,10 +47,10 @@ private:
 
         int smallest = idx;
 
-        if(left(idx) != -1 && students[left(idx)].Gpa < students[smallest].Gpa)
+        if(left(idx) != -1 && students[left(idx)].getGpa() < students[smallest].getGpa() )
             smallest = left(idx);
 
-        if(right(idx) != -1 && students[right(idx)].Gpa < students[smallest].Gpa)
+        if(right(idx) != -1 && students[right(idx)].getGpa()  < students[smallest].getGpa() )
             smallest = right(idx);
 
         if(smallest != idx){
@@ -77,13 +77,13 @@ public:
         students.push_back(s);
         int idx = students.size()-1;
 
-        while(parent(idx) != -1 && students[parent(idx)].Gpa > students[idx].Gpa) {
+        while(parent(idx) != -1 && students[parent(idx)].getGpa()  > students[idx].getGpa() ) {
             swap(students[idx], students[parent(idx)]);
             idx = parent(idx);
         }
     }
 
-    void print(){
+    void print(map<string, int>& Departments){
 
         int n = students.size();
         vector <student> temp;
@@ -91,8 +91,10 @@ public:
         for(int i = 0; i < n; i++)
             temp.push_back(extarctMin());
 
-        for(auto s : temp)
+        for(auto s : temp) {
+            Departments[s.getDep()]++;
             cout << s;
+        }
         cout << '\n';
 
         for(int i = 0; i < n; i++){

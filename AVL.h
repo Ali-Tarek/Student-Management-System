@@ -32,27 +32,12 @@ private:
         }
     }
 
-    void inorder(AVLNode* r){
+    void inorder(AVLNode* r, map <string, int>& Departments){
         if(r != nullptr){
-            inorder(r->left);
+            inorder(r->left, Departments);
+            Departments[r->key.getDep()]++;
             cout << r->key << ' ';
-            inorder(r->right);
-        }
-    }
-
-    void preorder(AVLNode* r) {
-        if(r != nullptr){
-            cout << r->key << ' ';
-            preorder(r->left);
-            preorder(r->right);
-        }
-    }
-
-    void postorder(AVLNode* r) {
-        if(r != nullptr){
-            postorder(r->left);
-            postorder(r->right);
-            cout << r->key << ' ';
+            inorder(r->right, Departments);
         }
     }
 
@@ -204,10 +189,10 @@ public:
 
         AVLNode* cur = root;
         while(cur != nullptr){
-            if(id < cur->key.Id){
+            if(id < cur->key.getId()){
                 cur = cur->left;
             }
-            else if(id > cur->key.Id){
+            else if(id > cur->key.getId()){
                 cur = cur->right;
             }
             else{
@@ -221,10 +206,10 @@ public:
 
         AVLNode* cur = root;
         while(cur != nullptr){
-            if(id < cur->key.Id){
+            if(id < cur->key.getId()){
                 cur = cur->left;
             }
-            else if(id > cur->key.Id){
+            else if(id > cur->key.getId()){
                 cur = cur->right;
             }
             else{
@@ -239,17 +224,10 @@ public:
         SIZE = 0;
     }
 
-    void inorder() {
-        inorder(root);
+    void inorder(map <string, int>& Departments) {
+        inorder(root, Departments);
     }
 
-    void preorder(){
-        preorder(root);
-    }
-
-    void postorder(){
-        postorder(root);
-    }
 
     ~AVL() {
         destroy(root);

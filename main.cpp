@@ -95,8 +95,15 @@ int main()
                             if(students.empty())
                                 cout << "No students.\n\n";
                             else {
+                                map <string, int> Departments;
+
                                 cout << "Print " << students.size() << " Students.\n\n";
-                                students.inorder();
+                                students.inorder(Departments);
+
+                                cout << "\nStudents per Departments:\n";
+                                for(auto& [dep, occ] : Departments)
+                                    cout << dep << ' ' << occ << " Students\n";
+                                cout << '\n';
                             }
 
                             break;
@@ -184,11 +191,19 @@ int main()
                         }
                         case 4:{
 
+
                             if(students.empty())
                                 cout << "No students.\n\n";
                             else {
+                                map <string, int> Departments;
+
                                 cout << "Print " << students.size() << " Students.\n\n";
-                                students.inorder();
+                                students.inorder(Departments);
+
+                                cout << "\nStudents per Departments:\n";
+                                for(auto& [dep, occ] : Departments)
+                                    cout << dep << ' ' << occ << " Students\n";
+                                cout << '\n';
                             }
 
                             break;
@@ -240,8 +255,16 @@ int main()
                             if(students.empty())
                                 cout << "No students.\n\n";
                             else{
+                                map<string, int> Departments;
+
                                 cout << "Print " << students.size() << " Students.\n\n";
-                                students.print();
+                                students.print(Departments);
+
+                                cout << "\nStudents per Departments:\n";
+                                for(auto& [dep, occ] : Departments)
+                                    cout << dep << ' ' << occ << " Students\n";
+                                cout << '\n';
+
                             }
                             break;
                         }
@@ -292,8 +315,16 @@ int main()
                             if(students.empty())
                                 cout << "No students.\n\n";
                             else{
+
+                                map<string, int> Departments;
+
                                 cout << "Print " << students.size() << " Students.\n\n";
-                                students.print();
+                                students.print(Departments);
+
+                                cout << "\nStudents per Departments:\n";
+                                for(auto& [dep, occ] : Departments)
+                                    cout << dep << ' ' << occ << " Students\n";
+                                cout << '\n';
                             }
                             break;
                         }

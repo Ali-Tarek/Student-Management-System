@@ -6,12 +6,13 @@
 using namespace std;
 
 class student{
-public:
+private:
 
     int Id;
     string Name, Dep;
     float Gpa;
 
+public:
     student() = default;
 
     friend istream& operator>>(istream& in, student& obj) {
@@ -44,6 +45,18 @@ public:
 
     bool operator>(const student& other) const {
         return (Id > other.Id);
+    }
+
+    int getId(){
+        return this->Id;
+    }
+
+    float getGpa(){
+        return this->Gpa;
+    }
+
+    string getDep(){
+        return this->Dep;
     }
 
 

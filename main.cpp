@@ -3,12 +3,35 @@
 #include "Maxheap.h"
 #include "Minheap.h"
 #include "student.h"
+#include <fstream>
 
 using namespace std;
 
+vector<student>studentsInTheFile;
+
+void loadStudents(){
+    fstream file;
+    file.open("students.txt");
+    // string studentsNumber;
+    // getline(file, studentsNumber);
+    file.ignore(1000, '\n');
+    while (!file.eof()){
+        string id;
+        string name, dep;
+        string gpa;
+        getline(file, id);
+        getline(file, name);
+        getline(file, gpa);
+        getline(file, dep);
+        student s(stoi(id), name, dep, stof(gpa));
+        studentsInTheFile.push_back(s);
+    }
+    file.close();
+}
+
 int main()
 {
-
+    loadStudents();
 
     bool stayInOuterLoop = true;
 
@@ -28,6 +51,9 @@ int main()
             case 1:{
                 bool stayInInnerLoop = true;
                 BST students;
+                for(auto s : studentsInTheFile){
+                    students.insert(s);
+                }
                 cout << "\n((Second Menu - choice 1 BST))\n";
 
                 do{
@@ -127,6 +153,9 @@ int main()
 
                 bool stayInInnerLoop = true;
                 AVL students;
+                for(auto s : studentsInTheFile){
+                    students.insert(s);
+                }
                 cout << "\n((Second Menu - choice 2 AVL))\n";
 
                 do{
@@ -228,6 +257,9 @@ int main()
 
                 bool stayInInnerLoop = true;
                 Minheap students;
+                for(auto s : studentsInTheFile){
+                    students.insert(s);
+                }
                 cout << "\n((Second Menu - choice 3 Min Heap))\n";
 
                 do{
@@ -288,6 +320,9 @@ int main()
 
                 bool stayInInnerLoop = true;
                 Maxheap students;
+                for(auto s : studentsInTheFile){
+                    students.insert(s);
+                }
                 cout << "\n((Second Menu - choice 4 Max Heap))\n";
 
                 do{

@@ -14,6 +14,12 @@ private:
 
 public:
     student() = default;
+    student(int id, string name, string dep, float gpa){
+        Id = id;
+        Name = name;
+        Dep = dep;
+        Gpa = gpa;
+    }
 
     friend istream& operator>>(istream& in, student& obj) {
         cout << "Id: ";
@@ -32,6 +38,8 @@ public:
 
         return in;
     }
+    
+    
 
     friend ostream& operator<<(ostream& out, const student& obj) {
 

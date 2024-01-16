@@ -11,7 +11,7 @@ This program offers a flexible solution for organizing student data, allowing us
 The implemented data structures ensure efficient operations for adding, removing, searching, and displaying student information.
 
 
-2. **Main Menu:**
+1. **Main Menu:**
    - The program presents a main menu with options to choose the desired data structure:
      1. BST (Binary Search Tree)
      2. AVL (AVL Tree)
@@ -19,10 +19,10 @@ The implemented data structures ensure efficient operations for adding, removing
      4. Max Heap
      5. Exit Program
 
-3. **Tree-Specific Menus:**
+2. **Tree-Specific Menus:**
    - Each tree option (BST, AVL, Min Heap, Max Heap) has its own menu with operations specific to that data structure.
 
-4. **File Structure:**
+3. **File Structure:**
      - main.cpp         # Main program source code
      - bst.cpp          # Binary Search Tree implementation
      - avl.cpp          # AVL Tree implementation
